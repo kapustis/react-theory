@@ -6,11 +6,18 @@ class App extends Component {
 
     state = {
         cars: [
-            {id:1, name: 'Ford', year: 2018},
-            {id:2, name: 'Audi', year: 2016},
-            {id:3, name: 'Mazda', year: 2010}
+            {id: 1, name: 'Ford', year: 2018},
+            {id: 2, name: 'Audi', year: 2016},
+            {id: 3, name: 'Mazda', year: 2010}
         ],
-        pageTitle: 'React components'
+        pageTitle: 'React components',
+        showCars: false
+    }
+
+    toggleCarsHandler = () =>{
+        this.setState({
+            showCars: !this.state.showCars
+        })
     }
 
     changeTitleHandler = (newTitle) => {
@@ -31,22 +38,19 @@ class App extends Component {
             textAlign: 'center'
         }
 
-        // const cars = this.state.cars
-
+        const isShow = this.state.showCars
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
 
-                <input type="text" onChange={this.handelInput} value={this.state.pageTitle} />
+                <input type="text" onChange={this.handelInput} value={this.state.pageTitle}/>
 
-                <button
-                    onClick={this.changeTitleHandler.bind(this, 'Changed!')}
-                >
-                    Change title
+                <button  onClick={this.toggleCarsHandler} >
+                    Show Cars
                 </button>
-                {
-                    this.state.cars.map((car) =>{
-                        return(
+                {isShow
+                   ? this.state.cars.map((car) => {
+                        return (
                             <Car
                                 key={car.id}
                                 name={car.name}
@@ -55,8 +59,8 @@ class App extends Component {
                             />
                         )
                     })
+                   : null
                 }
-
 
 
                 {/*<Car*/}
