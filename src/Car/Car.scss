@@ -1,0 +1,10 @@
+.Car{
+  display: flex;
+  flex-direction: column;
+  border: solid darkcyan 0.125rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: rgb(63,94,251);
+  background: linear-gradient(61deg, rgba(63,94,251,1) 0%, rgb(79, 70, 46) 100%);
+}
