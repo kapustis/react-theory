@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import './Car.scss'
 
 class Car extends React.Component {
 
     constructor(props) {
-        // console.log(props.car);
         super(props);
         this.state = {
             ID: null,
@@ -12,26 +12,7 @@ class Car extends React.Component {
             year: null,
             date: new Date()
         };
-
-    }
-
-    /** This method is deprecated. Don't use it in new code. */
-    // UNSAFE_componentWillReceiveProps(nextProps) {
-    //     console.log('Car componentWillReceiveProps', nextProps)
-    // }
-
-
-    // componentWillUpdate(nextProps, nextState) {
-    //     console.log('Car componentWillUpdate', nextProps, nextState)
-    // }
-
-    static getDerivedStateFromProps(props, state) {
-        if (props.car.name) {
-            return {
-                name: props.car.name
-            }
-        }
-        return null;
+        this.inputRef = React.createRef()
     }
 
     componentDidMount() {
@@ -44,17 +25,14 @@ class Car extends React.Component {
                 year: props.car.year
             }
         })
+
+        if (this.props.index === 1) {
+            this.inputRef.current.focus()
+        }
     }
-
-    // getSnapshotBeforeUpdate() {
-    //     console.log('Car getSnapshotBeforeUpdate')
-    //
-    // }
-
 
     componentWillUnmount() {
         clearInterval(this.timerID);
-        console.log('componentWillUnmount Car')
     }
 
     tick() {
@@ -63,9 +41,7 @@ class Car extends React.Component {
         });
     }
 
-
     render() {
-        // console.log(`Car id: ${this.state.ID} render`)
         return (
             <div className='Car'>
                 <h3 className={'text-warning'}>Сar name: {this.state.name}</h3>
@@ -81,6 +57,7 @@ class Car extends React.Component {
 
                 <div className={'input-group'}>
                     <input
+                        ref={this.inputRef}
                         className={'form-control'}
                         type="text"
                         onChange={this.props.onChangeName}
@@ -100,4 +77,8 @@ class Car extends React.Component {
     }
 }
 
+Car.propTypes ={
+    index: PropTypes.number.isRequired,
+    car: PropTypes.object.isRequired
+}
 export default Car

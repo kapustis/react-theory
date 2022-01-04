@@ -55,15 +55,6 @@ class App extends Component {
 
     }
 
-    /** This method is deprecated. Don't use it in new code. */
-    // UNSAFE_componentWillMount() {
-    //     console.log('App componentWillMount')
-    // }
-
-    componentDidMount() {
-        console.log('App componentDidMount')
-    }
-
     render() {
         const isShow = this.state.showCars
         return (
@@ -84,6 +75,7 @@ class App extends Component {
                                 return (
                                     <Car
                                         key={index}
+                                        index={index}
                                         car={car}
                                         onChangeTitle={this.changeTitleHandler.bind(this, car.name)}
                                         onChangeName={event => this.changeNameCar(event.target.value, index)}
