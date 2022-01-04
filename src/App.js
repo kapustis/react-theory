@@ -10,13 +10,14 @@ class App extends Component {
 
         this.state = {
             cars: [
-                {id: 1, name: 'Ford', year: 2018},
-                {id: 2, name: 'Audi', year: 2016},
-                {id: 3, name: 'Mazda', year: 2010}
+                {id: 1, name: 'Ford Mustang GT', year: 1969},
+                {id: 2, name: 'Audi A4 RS', year: 2018},
+                {id: 3, name: 'Mazda RX7 FD3S', year: 2020}
             ],
             pageTitle: 'React components',
             showCars: false
         }
+        // console.log("App constructor")
     }
 
     toggleCarsHandler = () => {
@@ -54,8 +55,16 @@ class App extends Component {
 
     }
 
-    render() {
+    /** This method is deprecated. Don't use it in new code. */
+    // UNSAFE_componentWillMount() {
+    //     console.log('App componentWillMount')
+    // }
 
+    componentDidMount() {
+        console.log('App componentDidMount')
+    }
+
+    render() {
         const isShow = this.state.showCars
         return (
             <div className="container">
@@ -64,21 +73,18 @@ class App extends Component {
                         <div className={style["App-logo"]}>
                             <img src={logo} alt="logo"/>
                         </div>
-
                         <h1 className={style.AppH1}>{this.state.pageTitle}</h1>
-
                         <input className="input-group-sm" type="text" onChange={this.handelInput} value={this.state.pageTitle}/>
-
                         <button className="btn btn-success" onClick={this.toggleCarsHandler}>
                             Show Cars
                         </button>
+
                         {isShow
                             ? this.state.cars.map((car,index) => {
                                 return (
                                     <Car
                                         key={index}
-                                        name={car.name}
-                                        year={car.year}
+                                        car={car}
                                         onChangeTitle={this.changeTitleHandler.bind(this, car.name)}
                                         onChangeName={event => this.changeNameCar(event.target.value, index)}
                                         onDelete={this.deleteCarHandler.bind(this, index)}
@@ -87,6 +93,7 @@ class App extends Component {
                             })
                             : null
                         }
+
                     </div>
                 </div>
             </div>
