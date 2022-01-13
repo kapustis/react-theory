@@ -1,0 +1,40 @@
+.Cars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+    & button {
+      margin: 0.5rem auto;
+    }
+    & h1{
+        margin: 0.5rem auto;
+    }
+}
+/**
+* Cars-logo-spin
+*/
+.Cars-logo {
+    fill: aliceblue;
+    & img{
+      height: 20vmin;
+      pointer-events: none;
+    }
+  
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .Cars-logo {
+      animation: Cars-logo-spin infinite 10s linear;
+    }
+  }
+  @keyframes Cars-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+/**
+* Cars-logo-spin
+*/
