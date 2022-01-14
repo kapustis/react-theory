@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "../logo.svg";
-import Car from "./Car/Car";
+import Car from "./Car/CarFC";
 import styles from "./Cars.module.scss";
 
 class Cars extends Component {

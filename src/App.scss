@@ -18,6 +18,10 @@ nav {
       & a {
         text-decoration: none;
       }
+      & a.active, a.wfm-active {
+        font-weight: bold;
+        color: red;
+      }
     }
   }
 }
